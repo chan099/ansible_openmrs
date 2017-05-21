@@ -1,0 +1,14 @@
+---
+# tasks file for openmrs
+- file:
+    path: /root/.OpenMRS
+    state: directory
+    mode: 0755
+- name: download file from a file path
+  get_url:
+    url: https://excellmedia.dl.sourceforge.net/project/openmrs/releases/OpenMRS_Platform_2.0.1/openmrs.war
+    dest: /usr/share/tomcat/webapps/openmrs.war
+    mode: 0777
+- service:
+    name: tomcat
+    state: restarted
